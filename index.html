@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LunarApp</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- WELCOME / SPLASH -->
+  <div id="splash" class="screen splash">
+    <div class="splash__panel">
+      <div class="splash__title">LunarApp, ver. 1.0</div>
+      <div class="splash__line">Добро пожаловать, сотрудник #0452</div>
+      <div class="splash__line splash__muted">© Собственность LC, 2025</div>
+
+      <button id="enterBtn" class="btn">Войти</button>
+
+      <!-- Можно убрать, если не нужно -->
+      <div class="splash__hint">Если кнопка не нажата, вход выполнится автоматически.</div>
+    </div>
+  </div>
+
+  <!-- MAIN APP -->
+  <div id="app" class="screen app hidden">
+    <header class="app__topbar">
+      <div class="app__brand">LunarApp</div>
+      <div class="app__user">EMP #0452</div>
+    </header>
+
+    <main class="app__content">
+      <h1>Главный экран</h1>
+      <p>Сюда позже добавим вкладки: MAP / RADIO / FILES.</p>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
