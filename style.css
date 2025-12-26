@@ -70,7 +70,8 @@ html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, Seg
 .app {
   background: var(--bg);
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
 }
 
 .app__topbar {
@@ -81,6 +82,117 @@ html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, Seg
   background: rgba(255,255,255,0.02);
 }
 
-.app__content { padding: 16px; }
+.app__content {
+  padding: 16px;
+  overflow-y: auto;
+}
 
 .hidden { display: none !important; }
+
+.tab {
+  display: none;
+}
+
+.tab.active {
+  display: block;
+}
+
+/* Bottom navigation */
+.app__nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--border);
+  background: rgba(255,255,255,0.03);
+}
+
+.nav-btn {
+  padding: 14px 0;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.nav-btn.active {
+  color: var(--text);
+  background: rgba(255,255,255,0.06);
+}
+
+/* Map block */
+.map {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  margin: 12px auto 0;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.02);
+
+  /* ВАЖНО для pinch-zoom */
+  touch-action: pan-x pan-y;
+}
+
+.map__img {
+  display: block;
+  width: 100%;
+  height: auto;
+
+  /* разрешаем масштабирование */
+  touch-action: manipulation;
+}
+
+/* Pins */
+.map__pin {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(231, 238, 252, 0.08);
+  color: var(--text);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.map__pin:active {
+  transform: translate(-50%, -50%) scale(0.98);
+}
+
+/* Simple modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  z-index: 50;
+}
+
+.modalBox {
+  width: min(520px, 92vw);
+  background: rgba(10, 14, 22, 0.92);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+  backdrop-filter: blur(6px);
+}
+
+.modalTitle {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.modalText {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}

@@ -13,27 +13,78 @@
     <div class="splash__panel">
       <div class="splash__title">LunarApp, ver. 1.0</div>
       <div class="splash__line">Добро пожаловать, сотрудник #0452</div>
-      <div class="splash__line splash__muted">© Собственность LC, 2025</div>
 
       <button id="enterBtn" class="btn">Войти</button>
 
       <!-- Можно убрать, если не нужно -->
-      <div class="splash__hint">Если кнопка не нажата, вход выполнится автоматически.</div>
+      <div class="splash__hint">© Собственность LC, 2025</div>
     </div>
   </div>
 
   <!-- MAIN APP -->
   <div id="app" class="screen app hidden">
-    <header class="app__topbar">
-      <div class="app__brand">LunarApp</div>
-      <div class="app__user">EMP #0452</div>
-    </header>
 
-    <main class="app__content">
-      <h1>Главный экран</h1>
-      <p>Сюда позже добавим вкладки: MAP / RADIO / FILES.</p>
-    </main>
+  <!-- TOP BAR -->
+  <header class="app__topbar">
+    <div class="app__brand">LunarApp</div>
+    <div class="app__user">EMP #0452</div>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="app__content">
+
+    <section id="tab-map" class="tab active">
+  <h2>Карта местности</h2>
+  <div class="splash__muted">Moon: Glower</div>
+
+  <div class="map">
+    <!-- заглушка-карта -->
+    <img id="mapImg" src="assets/map_placeholder.png" alt="Map" class="map__img">
+
+    <!-- слой точек поверх -->
+    <button class="map__pin" style="left: 18%; top: 35%;" data-title="Корабль" data-desc="Транспортный модуль. Высадка произведена.">
+      ●
+    </button>
+
+    <button class="map__pin" style="left: 60%; top: 28%;" data-title="Здание компании" data-desc="Официальный офис. Доступ по пропуску.">
+      ●
+    </button>
+
+    <button class="map__pin" style="left: 72%; top: 70%;" data-title="Жучиная пещера" data-desc="Опасная зона. Не приближаться без протокола.">
+      ●
+    </button>
   </div>
+
+  <!-- окно описания -->
+  <div id="mapModal" class="modal hidden">
+    <div class="modalBox">
+      <div id="mapModalTitle" class="modalTitle">Локация</div>
+      <div id="mapModalDesc" class="modalText">Описание</div>
+      <button id="mapModalClose" class="btn">Закрыть</button>
+    </div>
+  </div>
+</section>
+
+    <section id="tab-radio" class="tab">
+      <h2>Радиосвязь</h2>
+      <p>Сигнал нестабилен.</p>
+    </section>
+
+    <section id="tab-files" class="tab">
+      <h2>Файлы сотрудника</h2>
+      <p>Доступ ограничен.</p>
+    </section>
+
+  </main>
+
+  <!-- BOTTOM NAV -->
+  <nav class="app__nav">
+    <button class="nav-btn active" data-tab="map">MAP</button>
+    <button class="nav-btn" data-tab="radio">RADIO</button>
+    <button class="nav-btn" data-tab="files">FILES</button>
+  </nav>
+
+</div>
 
   <script src="app.js"></script>
 </body>
