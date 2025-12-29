@@ -196,3 +196,122 @@ html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, Seg
   line-height: 1.4;
   margin-bottom: 12px;
 }
+
+.radioPanel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.radioPanel .btn {
+  width: auto !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Табло частоты по центру */
+.radioReadout {
+  min-width: 160px;
+  text-align: center;
+}
+
+/* Кнопка питания (отдельно) — нормальной ширины */
+#radioPower.btn {
+  width: auto !important;
+  display: block;
+}
+
+.btn--power-off { background: #b63b3b; }
+.btn--power-on  { background: #2e8b57; }
+
+/* Чтобы было видно, что это кнопка */
+#radioPower { 
+  padding: 10px 16px;
+  margin: 40px auto 0 auto;
+}
+
+.files {
+  margin-top: 12px;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.files__row {
+  display: grid;
+  grid-template-columns: 1fr 80px 140px;
+  gap: 10px;
+  padding: 10px 12px;
+  align-items: center;
+}
+
+.files__head {
+  background: rgba(255,255,255,0.06);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  opacity: 0.8;
+}
+
+.files__item {
+  background: transparent;
+  border: none;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.files__item:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+.files__name {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 13px;
+}
+
+.files__type {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+.status {
+  justify-self: start;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.06em;
+}
+
+.status--ok   { background: rgba(46,139,87,0.25); border: 1px solid rgba(46,139,87,0.5); }
+.status--warn { background: rgba(200,160,60,0.20); border: 1px solid rgba(200,160,60,0.5); }
+.status--bad  { background: rgba(182,59,59,0.22); border: 1px solid rgba(182,59,59,0.55); }
+.status--lock { background: rgba(120,120,170,0.20); border: 1px solid rgba(120,120,170,0.55); }
+
+.is-disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(0,0,0,0.25);
+  color: inherit;
+}
+
+.files__head,
+.files__item {
+  display: grid !important;
+  grid-template-columns: 1fr 80px 140px;
+  gap: 10px;
+  align-items: center;
+}

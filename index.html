@@ -38,19 +38,27 @@
   <div class="splash__muted">Moon: Glower</div>
 
   <div class="map">
-    <!-- заглушка-карта -->
-    <img id="mapImg" src="assets/map_placeholder.png" alt="Map" class="map__img">
+    <!-- карта -->
+    <img id="mapImg" src="assets/map_glower.png" alt="Map" class="map__img">
 
     <!-- слой точек поверх -->
-    <button class="map__pin" style="left: 18%; top: 35%;" data-title="Корабль" data-desc="Транспортный модуль. Высадка произведена.">
+    <button class="map__pin" style="left: 81%; top: 93%;" data-title="Корабль" data-desc="Посадочный модуль. Используется для прибытия сотрудников на луну.">
       ●
     </button>
 
-    <button class="map__pin" style="left: 60%; top: 28%;" data-title="Здание компании" data-desc="Официальный офис. Доступ по пропуску.">
+    <button class="map__pin" style="left: 84%; top: 50%;" data-title="Здание компании" data-desc="Официальный офис компании. Доступ ограничен.">
       ●
     </button>
 
-    <button class="map__pin" style="left: 72%; top: 70%;" data-title="Жучиная пещера" data-desc="Опасная зона. Не приближаться без протокола.">
+    <button class="map__pin" style="left: 63%; top: 94%;" data-title="Жучиная пещера" data-desc="Опасная зона. Не кормить жуков. Не входить без протокола.">
+      ●
+    </button>
+
+    <button class="map__pin" style="left: 85%; top: 18%;" data-title="Комплекс" data-desc="Промышленная зона. Повышенная активность форм жизни.">
+      ●
+    </button>
+
+    <button class="map__pin" style="left: 20%; top: 80%;" data-title="Марсианский двор" data-desc="Жилая зона марсиан. Часто фиксируются странные танцы.">
       ●
     </button>
   </div>
@@ -66,14 +74,132 @@
 </section>
 
     <section id="tab-radio" class="tab">
-      <h2>Радиосвязь</h2>
-      <p>Сигнал нестабилен.</p>
-    </section>
+  <h2>Radio</h2>
+
+  <div class="radioPanel">
+    <button id="radioPrev" class="btn">◀</button>
+    <div class="radioReadout">
+      <div id="radioFreq" class="radioFreq">—.— MHz</div>
+      <div id="radioStatus" class="radioStatus">POWER OFF</div>
+    </div>
+    <button id="radioNext" class="btn">▶</button>
+  </div>
+
+  <button id="radioPower" class="btn btn--power-off">Питание</button>
+</section>
 
     <section id="tab-files" class="tab">
-      <h2>Файлы сотрудника</h2>
-      <p>Доступ ограничен.</p>
-    </section>
+  <h2>Файлы</h2>
+  <div class="muted">Repository: LC-LOCAL / User: #0452</div>
+
+  <div class="files">
+    <div class="files__row files__head">
+      <div>FILE NAME</div>
+      <div>TYPE</div>
+      <div>STATUS</div>
+    </div>
+
+    <!-- Примеры файлов: можешь менять/добавлять -->
+    <button class="files__row files__item"
+      data-status="available"
+      data-type="txt"
+      data-title="readme_0452.txt"
+      data-text="Employee #0452 local notes. Nothing important."
+      type="button">
+      <div class="files__name">readme_0452.txt</div>
+      <div class="files__type">TXT</div>
+      <div class="files__status status status--ok">AVAILABLE</div>
+    </button>
+
+    <button class="files__row files__item is-disabled"
+      data-status="corrupted"
+      data-type="jpg"
+      data-title="camera_frame_12.jpg"
+      type="button" disabled>
+      <div class="files__name">camera_frame_12.jpg</div>
+      <div class="files__type">JPG</div>
+      <div class="files__status status status--bad">CORRUPTED</div>
+    </button>
+
+    <button class="files__row files__item is-disabled"
+      data-status="missing"
+      data-type="log"
+      data-title="uplink_log.bin"
+      type="button" disabled>
+      <div class="files__name">uplink_log.bin</div>
+      <div class="files__type">BIN</div>
+      <div class="files__status status status--bad">MISSING</div>
+    </button>
+
+    <button class="files__row files__item is-disabled"
+      data-status="not_loaded"
+      data-type="jpg"
+      data-title="photo_surface.jpg"
+      type="button" disabled>
+      <div class="files__name">photo_surface.jpg</div>
+      <div class="files__type">JPG</div>
+      <div class="files__status status status--warn">NOT LOADED</div>
+    </button>
+
+    <!-- ВИДЕО: locked -->
+    <button class="files__row files__item"
+      data-status="locked"
+      data-type="mp4"
+      data-title="gopro_dump_0452.mp4"
+      data-src="assets/video/gopro_dump_0452.mp4"
+      type="button">
+      <div class="files__name">gopro_dump_0452.mp4</div>
+      <div class="files__type">MP4</div>
+      <div class="files__status status status--lock">LOCKED</div>
+    </button>
+  </div>
+
+  <!-- Модалка: текстовый файл -->
+  <div id="fileModal" class="modal hidden">
+    <div class="modalBox">
+      <div id="fileModalTitle" class="modalTitle">File</div>
+      <div id="fileModalText" class="modalText">...</div>
+      <button id="fileModalClose" class="btn">Закрыть</button>
+    </div>
+  </div>
+
+  <!-- Модалка: ввод пароля -->
+  <div id="passModal" class="modal hidden">
+    <div class="modalBox">
+      <div class="modalTitle">ACCESS REQUIRED</div>
+      <div class="modalText">Введите пароль для доступа к файлу.</div>
+
+      <input id="passInput" class="input" type="password" placeholder="Password" autocomplete="off">
+      <div id="passError" class="muted" style="margin-top:8px;"></div>
+
+      <div class="row" style="display:flex; gap:10px; margin-top:12px;">
+        <button id="passOk" class="btn">ОК</button>
+        <button id="passCancel" class="btn">Отмена</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модалка: видео -->
+  <div id="videoModal" class="modal hidden">
+    <div class="modalBox">
+      <div id="videoModalTitle" class="modalTitle">Video</div>
+      <video id="videoPlayer" controls style="width:100%; border-radius:10px;">
+        <source id="videoSource" src="" type="video/mp4">
+        Ваш браузер не поддерживает видео.
+      </video>
+      <button id="videoModalClose" class="btn" style="margin-top:12px;">Закрыть</button>
+    </div>
+  </div>
+
+  <!-- Модалка: изображение -->
+  <div id="imgModal" class="modal hidden">
+  <div class="modalBox">
+    <div id="imgModalTitle" class="modalTitle">Image</div>
+    <img id="imgViewer" alt="preview" style="width:100%; border-radius:10px; display:block;">
+    <button id="imgModalClose" class="btn" style="margin-top:12px;">Закрыть</button>
+  </div>
+</div>
+</section>
 
   </main>
 
