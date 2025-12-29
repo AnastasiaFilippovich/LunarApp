@@ -13,19 +13,16 @@ html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, Seg
 
 /* Splash background: можно заменить на свою картинку */
 .splash {
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background:
     radial-gradient(1200px 600px at 20% 10%, rgba(90, 120, 255, 0.18), transparent 60%),
     radial-gradient(900px 500px at 80% 70%, rgba(120, 255, 200, 0.10), transparent 55%),
     linear-gradient(180deg, #05070b 0%, #0a0f18 100%);
-  padding: 24px;
+  padding: 16px;
+  min-height: 100dvh;
 }
-
-/* Если хочешь фон-картинку:
-.splash { background: url("assets/bg.png") center/cover no-repeat; }
-и поверх оставить затемнение через ::before
-*/
 
 .splash__panel {
   width: min(560px, 92vw);
@@ -273,6 +270,9 @@ html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, Seg
 .files__name {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .files__type {
@@ -314,4 +314,27 @@ html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, Seg
   grid-template-columns: 1fr 80px 140px;
   gap: 10px;
   align-items: center;
+
+}
+
+.files__head > div,
+.files__item > div {
+  min-width: 0;
+}
+
+@media (max-width: 480px) {
+  .files__head,
+  .files__item {
+    grid-template-columns: 1fr 52px 110px !important;
+    gap: 8px;
+  }
+
+  .status {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .files__type {
+    font-size: 12px;
+  }
 }
