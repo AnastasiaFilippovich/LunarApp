@@ -59,10 +59,14 @@ const stations = [
   { freq: "101.1", type: "msg", src: "assets/radio/msg2.mp3", name: "SIGNAL FOUND" },
 
   { freq: "101.3", type: "empty" },
-  { freq: "101.5", type: "music", src: "assets/radio/music.mp3", name: "CAKE IS LIE" , volume: 0.05 },
+  { freq: "101.5", type: "music", src: "assets/radio/music.mp3", name: "CAKE IS LIE", volume: 0.05 },
 
   { freq: "101.7", type: "empty" },
-  { freq: "101.9", type: "msg", src: "assets/radio/key.mp3", name: "SIGNAL FOUND" },
+  { freq: "101.9", type: "msg", src: "assets/radio/msg3.mp3", name: "SIGNAL FOUND" },
+
+  { freq: "102.1", type: "empty" },
+  { freq: "102.3", type: "empty" },
+  { freq: "102.5", type: "msg", src: "assets/radio/key.mp3", name: "SIGNAL FOUND" },
 ];
 
 let radioIndex = 0;
